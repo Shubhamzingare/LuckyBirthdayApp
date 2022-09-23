@@ -5,16 +5,32 @@ var output = document.querySelector("#output");
 
 checkButton.addEventListener("click", checkBirthdayIsLucky);
 
-function checkBirthdayIsLucky(){
+function checkBirthdayIsLucky()
+{
     var dob = dateOfBirth.value;
+    output.innerHTML = dob;
     var sum = calculateSum(dob);
 
-    if(sum % luckyNumber.value === 0){
-        output.innerHTML = "Your Birthday is Lucky ✨🤗"
-    }
-    else{
-        output.innerHTML = "Your Birthday is NOT Lucky 😏"
-    }
+    if(sum === 0)
+            {
+                output.innerHTML = "Please enter your Birth Date";
+            }
+    else if(Number(luckyNumber.value) < 0)
+            {
+                output.innerHTML = "Number should be greater than Zero";
+            }
+    else if(Number(luckyNumber.value) === 0)
+            {
+                output.innerHTML = "What's your Lucky number";
+            }
+    else if(sum % Number(luckyNumber.value) === 0)
+            {
+                output.innerHTML = "Your Birthday is Lucky ✨🥳"
+            }
+    else
+            {
+                output.innerHTML = "Your Birthday is NOT Lucky 😏"
+            }
 }
 
 function calculateSum(dob){
